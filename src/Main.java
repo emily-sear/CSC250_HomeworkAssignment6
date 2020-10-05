@@ -8,29 +8,28 @@ public class Main
 {
 	public static void main(String[] args) throws FileNotFoundException
 	{
-		ArrayList<String> dataList = new ArrayList<String>();
+		ArrayList<BibleBook> dataList = new ArrayList<BibleBook>();
 		Scanner input = new Scanner(new File(System.getProperty("user.dir") + "/src/data.dat"));
 		while(input.hasNext())
 		{
-			dataList.add(input.nextLine());
+			dataList.add(new BibleBook(input.nextLine()));
 		}
 		
-		/**
+		input.close();
+		
+	
+		input = new Scanner(System.in);
+		System.out.println("What word do you want to find the first instance of in the summaries?");
+		String word = input.next();
 		
 		for(int i = 0; i < dataList.size(); i++)
 		{
-			System.out.println(dataList.get(i).toString());
+			if(dataList.get(i).wordInSummary(word) != null)
+			{
+				dataList.get(i).displayBook();
+				break;
+			}
 		}
-		**/
-		
-		BibleBook[] newTestament = new BibleBook[dataList.size()];
-		for(int i = 0; i < newTestament.length; i++)
-		{
-			newTestament[i] = new BibleBook(dataList.get(i));
-			newTestament[i].displayBook();
-			System.out.println();
-		}
-
 
 	}
 }

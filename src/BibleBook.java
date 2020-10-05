@@ -64,4 +64,16 @@ public class BibleBook
 		System.out.println(display);
 		
 	}
+	
+	public String wordInSummary(String word)
+	{
+		if(this.summaryOfBook.contains(word))
+		{
+			return this.bookName;
+		}
+		else
+		{
+			return null;
+		}
+	}
 }
