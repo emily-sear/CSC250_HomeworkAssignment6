@@ -67,7 +67,7 @@ public class BibleBook
 	
 	public String wordInSummary(String word)
 	{
-		if(this.summaryOfBook.contains(word))
+		if(this.summaryOfBook.toLowerCase().contains(word.toLowerCase()))
 		{
 			return this.bookName;
 		}
