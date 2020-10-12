@@ -30,6 +30,14 @@ public class BibleBookCollection
 		}
 	}
 	
+	public void displayBooksInList()
+	{
+		for(int i = 0; i < theBooks.size(); i++)
+		{
+			theBooks.get(i).displayBook();
+		}
+	}
+	
 	//polymorphism
 	public void addBibleBook(BibleBook b)
 	{
@@ -54,4 +62,50 @@ public class BibleBookCollection
 		
 		throw new Exception("Term not found");
 	}
-}
+	
+	public void sortOnName()
+	{
+		int numSwaps;
+		BibleBook temp;
+		
+		do
+		{
+			numSwaps = 0;
+			for(int i = 0; i < theBooks.size() -1; i++)
+			{
+				if(theBooks.get(i).getBookName().compareToIgnoreCase(theBooks.get(i+1).getBookName()) > 0)
+				{
+					temp = theBooks.get(i);
+					theBooks.set(i, theBooks.get(i + 1));
+					theBooks.set((i+1), temp);
+					theBooks.get(i).displayBook();
+					theBooks.get(i+1).displayBook();
+					numSwaps++;
+				}
+			}
+		}
+		while(numSwaps > 0);
+	}
+	
+	public void sortOnChapterCount()
+	{
+			int numSwaps;
+			BibleBook temp;
+			
+			do
+			{
+				numSwaps = 0;
+				for(int i = 0; i < theBooks.size() -1; i++)
+				{
+					if(theBooks.get(i).getNumOfChapters() > theBooks.get(i+1).getNumOfChapters())
+					{
+						temp = theBooks.get(i);
+						theBooks.set(i, theBooks.get(i + 1));
+						theBooks.set((i+1), temp);
+						numSwaps++;
+					}
+				}
+			}
+			while(numSwaps > 0);
+		}
+	}
