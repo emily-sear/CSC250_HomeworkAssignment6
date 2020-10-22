@@ -63,12 +63,13 @@ public class BibleBookCollection
 		throw new Exception("Term not found");
 	}
 	
+	//Bubble Sort theBooks on bookName in lexigraphical order 
 	public void sortOnName()
 	{
-		int numSwaps;
+		int numSwaps = -1;
 		BibleBook temp;
 		
-		do
+		while(numSwaps != 0)
 		{
 			numSwaps = 0;
 			for(int i = 0; i < theBooks.size() -1; i++)
@@ -78,26 +79,25 @@ public class BibleBookCollection
 					temp = theBooks.get(i);
 					theBooks.set(i, theBooks.get(i + 1));
 					theBooks.set((i+1), temp);
-					theBooks.get(i).displayBook();
-					theBooks.get(i+1).displayBook();
 					numSwaps++;
 				}
 			}
 		}
-		while(numSwaps > 0);
 	}
 	
+	//Bubble sort theBooks on chapter count from smallest to largest 
 	public void sortOnChapterCount()
 	{
-			int numSwaps;
+			int numSwaps = -1;
 			BibleBook temp;
-			
-			do
+			while(numSwaps != 0)
 			{
 				numSwaps = 0;
 				for(int i = 0; i < theBooks.size() -1; i++)
 				{
-					if(theBooks.get(i).getNumOfChapters() > theBooks.get(i+1).getNumOfChapters())
+					BibleBook firstBook = theBooks.get(i);
+					
+					if(firstBook.getNumOfChapters() > theBooks.get(i+1).getNumOfChapters())
 					{
 						temp = theBooks.get(i);
 						theBooks.set(i, theBooks.get(i + 1));
@@ -106,6 +106,5 @@ public class BibleBookCollection
 					}
 				}
 			}
-			while(numSwaps > 0);
 		}
 	}
